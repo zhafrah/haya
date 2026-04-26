@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data | RIIZE Technology</title>
+</head>
+<body>
+    <h2>Tambah Data RIIZE</h2>
+    <form action="mahasiswa.html" method="post" >
+        <table cellpadding="Spx">
+            <tr>
+                <td><label for="nama">Nama</label></td>
+                <td>:</td>
+                <td><input type="text" id="nama" name="nama" required/></td>
+            </tr>
+            <tr> 
+                <td><label for="nim">NIM</label></td>
+                <td>:</td>
+                <td><input type="text" id="nim" name="nim" /></td>
+            </tr>
+            <tr>
+                <td><label for="foto">Foto</label></td>
+                <td>:</td>
+                <td><input type="file" id="foto" name="foto" /></td>
+            </tr>
+            <tr>
+                <td><label for="dance">Dance</label></td>
+                <td>:</td>
+                <td><input type="number" id="dance" name="dance" /></td>
+            </tr>
+            <tr>
+                <td><label for="vocal">Vocal</label></td>
+                <td>:</td>
+                <td><input type="number" id="vocal" name="vocal" /></td>
+            </tr>
+            <tr>
+                <td><label for="visual">Visual</label></td>
+                <td>:</td>
+                <td><input type="number" id="visual" name="visual" /></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button type="submit" name="submit">Tambah Data</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <form>
+        <br>
+        <hr>
+        <table cellpadding="Spx">
+            <tr>
+                <td><label for="nama">Nama</label></td>
+                <td>:</td>
+                <td><input type="text" id="nama" name="nama" /></td>
+            </tr>
+            <tr>
+                <td><label for="nim">NIM</label></td>
+                <td>:</td>
+                <td><input type="number" id="nim" name="nim" /></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td>:</td>
+                <td><input type="password" id="password" name="password" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td>:</td>
+                <td><input type="email" id="password" name="password" /></td>
+            </tr>
+            <tr>
+                <td><label for="no hp">NO HP</label></td>
+                <td>:</td>
+                <td><input type="el" id="no hp" name="no hp" /></td>
+            </tr>
+            <tr>
+                <td><label for="website pribadi">Wibsite Pribadi</label></td>
+                <td>:</td>
+                <td><input type="url" id="website pribadi" name="website pribadi" /></td>
+            </tr>
+            <tr>
+                <td><label for="tanggal lahir">Tanggal Lahir</label></td>
+                <td>:</td>
+                <td><input type="date" id="tanggal lahir" name="tanggal lahir" /></td>
+            </tr>
+            <tr>
+                <td><label for="warna favorit">Warna favorit</label></td>
+                <td>:</td>
+                <td><input type="color" id="warna favorit" name="warna favorit" /></td>
+            </tr>
+            <tr>
+                <td><label for="tingkat kepuasan">Tingkat Kepuasan</label></td>
+                <td>:</td>
+                <td><input type="range" id="tingkat kepuasan" name="tingkat kepuasan" /></td>
+            </tr>
+            <tr>
+                <td><label>jenis kelamin</label></td>
+                <td>:</td>
+                <td>
+                <input type="radio" name="jk" value="Laki-Laki">
+                <label for="jk">Laki-Laki</label>
+                <input type="radio" name="pr" value="Perempuan">
+                <label for="pr">Perempuan</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="hobi">Hobi</label></td>
+                <td>:</td>
+                <td>
+                <input type="checkbox" name="hobi" value="menyanyi">
+                <label for="hobi">Menyanyi</label>
+                <input type="checkbox" name="hobi" value="menari">
+                <label for="hobi">Menari</label>
+                <input type="checkbox" name="hobi" value="melukis">
+                <label for="hobi">Melukis</label>
+                <td>
+            </tr>
+            <tr>
+                <td><label for="foto">Foto</label></td>
+                <td>:</td>
+                <td><input type="file" id="foto" name="foto" /></td>
+            </tr>
+            <tr>
+                <td><label for="alamat">Alamat</label></td>
+                <td>:</td>
+                <td><input type="textarea" id="alamat" name="alamat" /></td>
+            </tr>
+        </table>
+        <table>
+            <label for="jurusan">Jurusan </label>
+            <select name="jurusan" id="jurusan">
+                <option value="riize">RIIZE</option>
+                <option value="nct">NCT</option>
+                <option value="exo">EXO</option>
+            </select>
+        </table>
+            <tr>
+                <td colspan="3">
+                <button type="submit" name="submit">Submit</button>
+                </td>
+            </tr>
+    </form>
+</body>
+</html>
