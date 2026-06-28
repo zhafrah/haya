@@ -1,13 +1,11 @@
-
 <?php
-$koneksi = mysqli_connect("localhost", "root", "", "hyweekly");
 
-if(!$koneksi){
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+require 'fungsi.php';
 
-$query = "SELECT * FROM mahasiswa";
-$result = mysqli_query($koneksi, $query);
+$query = "SELECT * FROM mahasiswa"; ///perintah
+$mahasiswas = tampildata($query);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -173,8 +171,9 @@ $result = mysqli_query($koneksi, $query);
 
             <?php
             $no = 1;
-            while($mhs = mysqli_fetch_assoc($result)){
+            foreach($mahasiswas as $mhs){
             ?>
+
             <tr>
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $mhs["nama"] ?></td>
@@ -198,81 +197,6 @@ $result = mysqli_query($koneksi, $query);
             
         </table>
     </div>
-
-    <!-- DATA RIIZE -->
-    <div class="card">
-        <h2>Data RIIZE</h2>
-
-        <table>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Foto</th>
-                <th>Dance</th>
-                <th>Vocal</th>
-                <th>Visual</th>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>Park Wonbin</td>
-                <td>
-                    <img src="assets/images/binii lope.jpg" width="80">
-                </td>
-                <td>90</td>
-                <td>98</td>
-                <td>98</td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Osaki Shotaro</td>
-                <td>
-                    <img src="assets/images/Shotaroo.jpg" width="80">
-                </td>
-                <td>98</td>
-                <td>90</td>
-                <td>90</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- PROFIL MEMBER -->
-    <div class="card">
-        <h2>Profil Member RIIZE</h2>
-
-        <table>
-            <tr>
-                <th>Nama</th>
-                <th>Posisi</th>
-                <th>Tempat Lahir</th>
-                <th>MBTI</th>
-            </tr>
-
-            <tr>
-                <td>Shotaro</td>
-                <td>Main Dancer</td>
-                <td>Kanagawa, Jepang</td>
-                <td>ESFP</td>
-            </tr>
-
-            <tr>
-                <td>Wonbin</td>
-                <td>Center, Visual</td>
-                <td>Ulsan, Korea Selatan</td>
-                <td>ISTJ</td>
-            </tr>
-
-            <tr>
-                <td>Sohee</td>
-                <td>Main Vocal</td>
-                <td>Gyeonggi, Korea Selatan</td>
-                <td>ISFP</td>
-            </tr>
-        </table>
-    </div>
-
-</div>
 
 <footer>
     © 2026 RIIZE Fan Page | Dibuat oleh Zhafirah Haya

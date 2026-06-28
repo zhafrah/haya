@@ -1,147 +1,150 @@
-<!DOCTYPE php>
-<php lang="en">
+<?php
+
+require 'fungsi.php';
+
+if(isset($_POST['submit'])){
+
+    $nama     = $_POST['nama'];
+    $nim      = $_POST['nim'];
+    $jurusan  = $_POST['jurusan'];
+    $email    = $_POST['email'];
+    $no_hp    = $_POST['no_hp'];
+
+    // Upload Foto
+    $foto = $_FILES['foto']['name'];
+    $tmp  = $_FILES['foto']['tmp_name'];
+
+    // Simpan foto ke folder assets/images
+    move_uploaded_file($tmp, "assets/images/" . $foto);
+
+    $query = "INSERT INTO mahasiswa
+            (nama, nim, jurusan, email, no_hp, foto)
+            VALUES
+            ('$nama', '$nim', '$jurusan', '$email', '$no_hp', '$foto')";
+
+    mysqli_query($koneksi, $query);
+
+    if(mysqli_affected_rows($koneksi) > 0){
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href='mahasiswa.php';
+              </script>";
+    }else{
+        echo mysqli_error($koneksi);
+    }
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data | RIIZE Technology</title>
-    <link rel="stylesheet" href="assets/css/style.css"
+    <title>Tambah Data Mahasiswa</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+        }
+
+        .container{
+            width:450px;
+            margin:40px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        table{
+            width:100%;
+        }
+
+        td{
+            padding:8px;
+        }
+
+        input{
+            width:100%;
+            padding:8px;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#2a5298;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1e3c72;
+        }
+    </style>
+
 </head>
 <body>
-    <h2>Tambah Data RIIZE</h2>
-    <form action="mahasiswa.php" method="post" >
-        <table cellpadding="Spx">
-            <tr>
-                <td><label for="nama">Nama</label></td>
-                <td>:</td>
-                <td><input type="text" id="nama" name="nama" required/></td>
-            </tr>
-            <tr> 
-                <td><label for="nim">NIM</label></td>
-                <td>:</td>
-                <td><input type="text" id="nim" name="nim" /></td>
-            </tr>
-            <tr>
-                <td><label for="foto">Foto</label></td>
-                <td>:</td>
-                <td><input type="file" id="foto" name="foto" /></td>
-            </tr>
-            <tr>
-                <td><label for="dance">Dance</label></td>
-                <td>:</td>
-                <td><input type="number" id="dance" name="dance" /></td>
-            </tr>
-            <tr>
-                <td><label for="vocal">Vocal</label></td>
-                <td>:</td>
-                <td><input type="number" id="vocal" name="vocal" /></td>
-            </tr>
-            <tr>
-                <td><label for="visual">Visual</label></td>
-                <td>:</td>
-                <td><input type="number" id="visual" name="visual" /></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button type="submit" name="submit">Tambah Data</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <form>
-        <br>
-        <hr>
-        <table cellpadding="Spx">
-            <tr>
-                <td><label for="nama">Nama</label></td>
-                <td>:</td>
-                <td><input type="text" id="nama" name="nama" /></td>
-            </tr>
-            <tr>
-                <td><label for="nim">NIM</label></td>
-                <td>:</td>
-                <td><input type="number" id="nim" name="nim" /></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password</label></td>
-                <td>:</td>
-                <td><input type="password" id="password" name="password" /></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email</label></td>
-                <td>:</td>
-                <td><input type="email" id="password" name="password" /></td>
-            </tr>
-            <tr>
-                <td><label for="no hp">NO HP</label></td>
-                <td>:</td>
-                <td><input type="el" id="no hp" name="no hp" /></td>
-            </tr>
-            <tr>
-                <td><label for="website pribadi">Wibsite Pribadi</label></td>
-                <td>:</td>
-                <td><input type="url" id="website pribadi" name="website pribadi" /></td>
-            </tr>
-            <tr>
-                <td><label for="tanggal lahir">Tanggal Lahir</label></td>
-                <td>:</td>
-                <td><input type="date" id="tanggal lahir" name="tanggal lahir" /></td>
-            </tr>
-            <tr>
-                <td><label for="warna favorit">Warna favorit</label></td>
-                <td>:</td>
-                <td><input type="color" id="warna favorit" name="warna favorit" /></td>
-            </tr>
-            <tr>
-                <td><label for="tingkat kepuasan">Tingkat Kepuasan</label></td>
-                <td>:</td>
-                <td><input type="range" id="tingkat kepuasan" name="tingkat kepuasan" /></td>
-            </tr>
-            <tr>
-                <td><label>jenis kelamin</label></td>
-                <td>:</td>
-                <td>
-                <input type="radio" name="jk" value="Laki-Laki">
-                <label for="jk">Laki-Laki</label>
-                <input type="radio" name="pr" value="Perempuan">
-                <label for="pr">Perempuan</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="hobi">Hobi</label></td>
-                <td>:</td>
-                <td>
-                <input type="checkbox" name="hobi" value="menyanyi">
-                <label for="hobi">Menyanyi</label>
-                <input type="checkbox" name="hobi" value="menari">
-                <label for="hobi">Menari</label>
-                <input type="checkbox" name="hobi" value="melukis">
-                <label for="hobi">Melukis</label>
-                <td>
-            </tr>
-            <tr>
-                <td><label for="foto">Foto</label></td>
-                <td>:</td>
-                <td><input type="file" id="foto" name="foto" /></td>
-            </tr>
-            <tr>
-                <td><label for="alamat">Alamat</label></td>
-                <td>:</td>
-                <td><input type="textarea" id="alamat" name="alamat" /></td>
-            </tr>
-        </table>
-        <table>
-            <label for="jurusan">Jurusan </label>
-            <select name="jurusan" id="jurusan">
-                <option value="riize">RIIZE</option>
-                <option value="nct">NCT</option>
-                <option value="exo">EXO</option>
-            </select>
-        </table>
-            <tr>
-                <td colspan="3">
-                <button type="submit" name="submit">Submit</button>
-                </td>
-            </tr>
-    </form>
+
+<div class="container">
+
+<h2>Tambah Data Mahasiswa</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+
+<table>
+
+<tr>
+    <td>Nama</td>
+    <td><input type="text" name="nama" required></td>
+</tr>
+
+<tr>
+    <td>NIM</td>
+    <td><input type="text" name="nim" required></td>
+</tr>
+
+<tr>
+    <td>Jurusan</td>
+    <td><input type="text" name="jurusan" required></td>
+</tr>
+
+<tr>
+    <td>Email</td>
+    <td><input type="email" name="email" required></td>
+</tr>
+
+<tr>
+    <td>No HP</td>
+    <td><input type="text" name="no_hp" required></td>
+</tr>
+
+<tr>
+    <td>Foto</td>
+    <td><input type="file" name="foto" required></td>
+</tr>
+
+<tr>
+    <td colspan="2">
+        <button type="submit" name="submit">
+            Tambah Data
+        </button>
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
 </body>
-</php>
+</html>
